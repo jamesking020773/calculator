@@ -1,0 +1,89 @@
+using System;
+
+class Calculator
+{
+    static double AdditionOperation(double a, double b)
+    {
+        return a + b;
+    }
+
+    static double SubtractionOperation(double a, double b)
+    {
+        return a - b;
+    }
+
+    static double MultiplicationOperation(double a, double b)
+    {
+        return a * b;
+    }
+
+    static double DivisionOperation(double a, double b)
+    {
+        if (b == 0)
+        {
+            Console.WriteLine("Cannot divide by zero");
+            return double.NaN; // NaN (Not a Number) represents an undefined result
+        }
+        else
+        {
+            return a / b;
+        }
+    }
+
+    static char GetOperationChoice()
+    {
+        Console.WriteLine("Choose an operation:");
+        Console.WriteLine("1. Addition");
+        Console.WriteLine("2. Subtraction");
+        Console.WriteLine("3. Multiplication");
+        Console.WriteLine("4. Division");
+        return Console.ReadKey().KeyChar;
+    }
+
+    static Tuple<double, double> GetOperands()
+    {
+        Console.Write("Enter first operand: ");
+        double operand1 = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter second operand: ");
+        double operand2 = double.Parse(Console.ReadLine());
+
+        return new Tuple<double, double>(operand1, operand2);
+    }
+
+    static void Calculator()
+    {
+        char operationChoice = GetOperationChoice();
+        Tuple<double, double> operands = GetOperands();
+        double operand1 = operands.Item1;
+        double operand2 = operands.Item2;
+
+        double result = 0;
+
+        switch (operationChoice)
+        {
+            case '1':
+                result = AdditionOperation(operand1, operand2);
+                break;
+            case '2':
+                result = SubtractionOperation(operand1, operand2);
+                break;
+            case '3':
+                result = MultiplicationOperation(operand1, operand2);
+                break;
+            case '4':
+                result = DivisionOperation(operand1, operand2);
+                break;
+            default:
+                Console.WriteLine("Invalid operation choice");
+                return;
+        }
+
+        Console.WriteLine("Result: " + result);
+    }
+
+    static void Main()
+    {
+        Calculator();
+    }
+}
