@@ -1,0 +1,41 @@
+AdditionOperation(a, b):
+    return a + b
+
+SubtractionOperation(a, b):
+    return a - b
+
+MultiplicationOperation(a, b):
+    return a * b
+
+DivisionOperation(a, b):
+    if b == 0:
+        return "Cannot divide by zero"
+    else:
+        return a / b
+
+GetOperationChoice():
+    DisplayOperationMenu()
+    userInput = GetUserInput()
+    return userInput
+
+GetOperands():
+    operand1 = GetOperandInput("Enter first operand: ")
+    operand2 = GetOperandInput("Enter second operand: ")
+    return operand1, operand2
+
+Calculator():
+    operationChoice = GetOperationChoice()
+    operand1, operand2 = GetOperands()
+    
+    if operationChoice == "1":
+        result = AdditionOperation(operand1, operand2)
+    else if operationChoice == "2":
+        result = SubtractionOperation(operand1, operand2)
+    else if operationChoice == "3":
+        result = MultiplicationOperation(operand1, operand2)
+    else if operationChoice == "4":
+        result = DivisionOperation(operand1, operand2)
+    else:
+        result = "Invalid operation choice"
+    
+    DisplayResult(result)
