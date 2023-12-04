@@ -1,4 +1,3 @@
-The functions are defined first, following the bottom-up approach, and then integrated within the calculator() function to execute the selected operation. 
 def addition_operation(a, b):
     return a + b
 
