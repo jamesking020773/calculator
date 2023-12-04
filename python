@@ -1,0 +1,48 @@
+The functions are defined first, following the bottom-up approach, and then integrated within the calculator() function to execute the selected operation. 
+def addition_operation(a, b):
+    return a + b
+
+def subtraction_operation(a, b):
+    return a - b
+
+def multiplication_operation(a, b):
+    return a * b
+
+def division_operation(a, b):
+    if b == 0:
+        return "Cannot divide by zero"
+    else:
+        return a / b
+
+def get_operation_choice():
+    print("Choose an operation:")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    return input("Enter operation choice (1-4): ")
+
+def get_operands():
+    operand1 = float(input("Enter first operand: "))
+    operand2 = float(input("Enter second operand: "))
+    return operand1, operand2
+
+def calculator():
+    operation_choice = get_operation_choice()
+    operand1, operand2 = get_operands()
+    
+    if operation_choice == "1":
+        result = addition_operation(operand1, operand2)
+    elif operation_choice == "2":
+        result = subtraction_operation(operand1, operand2)
+    elif operation_choice == "3":
+        result = multiplication_operation(operand1, operand2)
+    elif operation_choice == "4":
+        result = division_operation(operand1, operand2)
+    else:
+        result = "Invalid operation choice"
+    
+    print("Result:", result)
+
+# Run the calculator
+calculator()
